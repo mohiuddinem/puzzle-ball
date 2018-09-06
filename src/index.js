@@ -7,11 +7,14 @@
 let leftVal = 250
 
 let topVal = 50
-let ballWidth = 30
-let cvwidth = ballWidth * 10
+let ballWidth = 50
+let ballHeight = 50
+let cvwidth = ballWidth * 5
+let cvheight  = ballHeight * 5
+
 const ballstyle = {
     width:`${ballWidth}px`,
-    height: '30px',
+    height: `${ballHeight}px`,
     borderRadius:'50%',
     background:'blue',
     position:'absolute',
@@ -20,7 +23,7 @@ const ballstyle = {
 }
 const cvstyle = {
     width:`${cvwidth}px`,
-    height:'300px',
+    height: `${cvheight}px`,
     marginTop:'50px',
     border: '1px solid red',
     position:'relative'
@@ -42,7 +45,7 @@ console.log(cvwidth)
     let canvasWidth = cv.clientWidth
     
     let canvasHeight = cv.clientHeight
-    let ballHeight = ball.clientHeight
+    //let ballHeight = ball.clientHeight
 
     let toTopBottomMove = canvasHeight/ballHeight
     let toLeftRightMove = canvasWidth/ballWidth
@@ -87,12 +90,25 @@ console.log(cvwidth)
                
             }
             else if(e.target.value === 'top'){
-                if(leftVal >= cvwidth){
+                if(topVal <= 0){
                     alert('you crossed')
                 }else{
-                    leftVal = leftVal + 30
+                    topVal = topVal - 30
                     Object.assign(ball.style,{
-                        left :`${leftVal}px`
+                        top :`${topVal}px`
+                     })
+                }
+
+               
+            }
+            
+            else if(e.target.value === 'bottom'){
+                if(topVal >= cvheight){
+                    alert('you crossed')
+                }else{
+                    topVal = topVal + 30
+                    Object.assign(ball.style,{
+                        top :`${topVal}px`
                      })
                 }
 
